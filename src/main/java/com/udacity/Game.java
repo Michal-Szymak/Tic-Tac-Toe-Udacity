@@ -152,14 +152,21 @@ public class Game {
         String result = "None";
         char resultChar = '-';
 
+        //Game couldn't end if we don't have at least 5 spots taken
         if(this.freeSpots <= 4) {
             for(int i = 0; i <= 2; i++) {
+
+                //check columns
                 if(grid[i][0] != '-' && grid[i][0] == grid[i][1] && grid[i][1] == grid[i][2]) {
                     resultChar = grid[i][0];
+
+                //check lines
                 } else if(grid[0][i] != '-' && grid[0][i] == grid[1][i] && grid[1][i] == grid[2][i]){
                     resultChar = grid[0][i];
                 }
             }
+
+            //check diagonals
             if(grid[1][1] != '-' ){
                 if(grid[0][0] == grid [1][1] && grid[2][2] == grid[1][1]){
                     resultChar = grid[1][1];
@@ -169,6 +176,7 @@ public class Game {
             }
         }
 
+        //if game is finished, change the result String.
         if(resultChar == 'x'){
             result = "X wins";
         } else if(resultChar == 'o'){
